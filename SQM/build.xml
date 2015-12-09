@@ -1,0 +1,34 @@
+<project name = "build-jibber">
+    
+    <target name = "clean">
+            <delete dir = "build"/>
+            <mkdir dir = "build/classes"/>
+    </target>
+    
+    
+    
+
+		<target name = "compile" depends = "clean">
+				<mkdir dir = "build/classes"/>
+				<javac srcdir = "src/g53sqm/jibble"
+					destdir = "build/classes"
+					includeantruntime = "false"/>
+		</target>
+        
+        <target name ="jar" depends = "compile">
+                    <jar destfile = "build/jar/Jibble.jar"
+                        basedir = "build/classes">
+                        
+                            <manifest>
+                                <attribute name = "Main-Class" value = "g53sqm.jibble.WebServerMain"/>
+                            </manifest>
+                    </jar>
+        </target>
+        
+        
+        <target name = "run" depends = "jar">
+                <java jar = "build/jar/Jibble.jar" fork = "true"/>
+        
+        </target>
+        
+</project>
